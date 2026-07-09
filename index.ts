@@ -12,11 +12,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+app.use((req, res, next) => {
+  console.log("Request Origin:", JSON.stringify(req.headers.origin));
+  console.log("Request Host:", req.headers.host);
+  next();
+});
+
 app.use(
   cors({
-    origin:
-      process.env.CLIENT_URL ||
-      "http://localhost:3001",
+    origin: (origin, callback) => {
+      console.log("CORS origin:", JSON.stringify(origin));
+      callback(null, true);
+    },
     credentials: true,
   })
 );
