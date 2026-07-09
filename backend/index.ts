@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:3001"],
+    origin: process.env.CLIENT_URL || "http://localhost:3000",
     credentials: true,
   }),
 );
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoutes);
-app.use("/api/categories", categoryRoutes);
+app.use("/api/categories", categoryRoutes);0
 app.use("/api/expenses", expenseRoutes);
 
 app.get("/api/health", (req, res) => {
