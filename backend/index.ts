@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRoutes);
-app.use("/api/categories", categoryRoutes);0
+app.use("/api/categories", categoryRoutes);
 app.use("/api/expenses", expenseRoutes);
 
 app.get("/api/health", (req, res) => {
@@ -54,7 +54,7 @@ app.use(
 const start = async () => {
   await connectDB();
   app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
   });
 };
 
