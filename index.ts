@@ -9,8 +9,14 @@ import expenseRoutes from "./routes/expenses";
 
 dotenv.config();
 
+console.log("CLIENT_URL =", JSON.stringify(process.env.CLIENT_URL));
+console.log("Length =", process.env.CLIENT_URL?.length);
+
+
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+
 
 app.use(
   cors({
